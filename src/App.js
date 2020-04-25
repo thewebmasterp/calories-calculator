@@ -1,12 +1,15 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+
+import Calculator from './Containers/Calculator/Calculator';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-      <div>
-          <p>environment set up. Connecting local git to github.</p>
-      </div>
-  );
+    <BrowserRouter>
+      <Calculator />
+    </BrowserRouter>
+  )
 }
 
 export default App;

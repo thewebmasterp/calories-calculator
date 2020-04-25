@@ -1,0 +1,28 @@
+.Field {
+    background: red;
+    height: auto;
+    min-height: 40px;
+    width: 96%;
+    margin: 5px 0;
+    align-self: center;
+    display: flex;
+    &.whole {
+        width: 100%;
+        margin-top: 0;
+    }
+    .label {
+        font-size: 1em;
+        height: 100%;
+        width: 80px;
+        background: green;
+        margin: 0;
+        padding: 0 10px;
+        text-align: center;
+        line-height: 40px;
+    }
+    .content {
+        height: 100%;
+        width: 100%;
+        background: orange;
+    }
+}
