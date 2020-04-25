@@ -1,0 +1,21 @@
+p {
+    display: inline;
+    position: absolute;
+    transform: translate(16px, -16px);
+}
+
+input[type="number"] {
+    background: red;
+    height: 20px;
+    padding-top: 14px !important;
+    padding-bottom: 6px !important;
+    padding-left: 6px !important;
+    font-size: 1.4em;
+    width: 100%;
+    border: none;
+    padding: 0;
+    outline: none;
+    &:focus {
+        outline: none;
+    }
+}

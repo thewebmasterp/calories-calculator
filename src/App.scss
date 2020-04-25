@@ -2,6 +2,10 @@ body {
     background: black;
     color: white;
     font-size: 15px;
+    font-family: 'Ubuntu', sans-serif !important;
+    button, input {
+        font-family: 'Ubuntu', sans-serif !important;
+    }
 }
 
 // @media only screen and (max-width: 300px) {

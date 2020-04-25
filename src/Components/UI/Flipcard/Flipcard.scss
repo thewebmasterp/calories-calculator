@@ -2,11 +2,8 @@
     background-color: transparent;
     // width: 500px;
     height: 300px;
-    
     max-width: 500px;
     min-width: 250px;
-
-
     perspective: 1000px;
     .flip-card-inner {
         position: relative;
@@ -15,10 +12,10 @@
         text-align: center;
         transition: transform 0.6s;
         transform-style: preserve-3d;
-        // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    }
-    &:hover .flip-card-inner {
-        transform: rotateY(180deg);
+        // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
     }
 }
+
+// .flip-card-inner  transform: rotateY(180deg);
+
   

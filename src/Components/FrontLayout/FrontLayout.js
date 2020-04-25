@@ -2,17 +2,12 @@ import React, { Component } from 'react';
 import './FrontLayout.scss';
 
 class FrontLayout extends Component {
-    state = {
-        width: []
-    }
-      
-
     render() {
         return (
-            <section id="Calculator">
+            <section id="FrontLayer">
                 {this.props.children}
             </section>
-        )
+        );
     }
 }
 

@@ -1,10 +1,9 @@
-#Calculator {
+#FrontLayer {
     background: gray;
     max-width: 500px;
     min-width: 250px;
-    height: 800px;
-    // padding: 10px 0px;
-    margin-top: 10px;
+    height: auto;
+    padding-bottom: 5px;
     display: flex;
     flex-direction: column;
 }

@@ -5,11 +5,13 @@ import './Calculator.scss';
 import ImperialUnits from './ImperialUnits/ImperialUnits';
 import MetricUnits from './MetricUnits/MetricUnits';
 import FrontLayout from './../../Components/FrontLayout/FrontLayout';
+
 import Field from './../../Components/FrontLayout/Field/Field';
 import FlipCard from '../../Components/UI/Flipcard/Flipcard';
 import Front from '../../Components/UI/Flipcard/Front/Front';
 import Back from '../../Components/UI/Flipcard/Back/Back';
 import Tabs from '../../Components/UI/Tabs/Tabs';
+import Input from '../../Components/UI/Input/Input';
 
 //soon gonna convert everything to hooks.
 class Calculator extends Component {
@@ -36,9 +38,24 @@ class Calculator extends Component {
                             <Field whole>
                                 <Tabs />
                             </Field>
-                            <Field label="just try" />
-                            <Field label="p" />
-                            <Field label="s" /> 
+                            <Field label="age">
+                                <Input type="number" />
+                            </Field>
+                            <Field label="gender">
+
+                            </Field>
+                            <Field label="height">
+
+                            </Field> 
+                            <Field label="weight">
+
+                            </Field> 
+                            <Field label="activity">
+
+                            </Field> 
+                            <Field label="goal">
+
+                            </Field> 
                         </FrontLayout>
                     </Front>
                     <Back>

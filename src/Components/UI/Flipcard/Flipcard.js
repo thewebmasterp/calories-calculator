@@ -3,8 +3,8 @@ import './Flipcard.scss';
 
 const flipcard = (props) => {
     return (
-        <div class="flip-card">
-            <div class="flip-card-inner">
+        <div className="flip-card">
+            <div className="flip-card-inner">
                 {props.children}
             </div>
         </div> 
