@@ -1,10 +1,15 @@
 import React from 'react';
 import './Tabs.scss';
+import { NavLink } from 'react-router-dom';
 
 const Tabs = (props) => {
     return (<>
-        <button>lorem ipsum dolo</button>
-        <button>lorem ipsum </button>
+        <NavLink to="/imperial" className="button" activeStyle={{background: 'red'}} >
+            <button>IMPERIAL UNITS</button>
+        </NavLink>
+        <NavLink to="/metric" className="button" activeStyle={{background: 'red'}} >
+            <button>METRIC UNITS</button>
+        </NavLink>
     </>)
 };
 

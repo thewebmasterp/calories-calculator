@@ -6,25 +6,29 @@ const textInput = (props) => {
     // eslint-disable-next-line default-case
     switch(props.type) {
         case 'number':
-            input = (<>
-                <p>asd</p>
-                <input type="number" />
-            </>);
+            input = (
+                <div className="wrap" style={props.style}>
+                    <p>{props.guide}</p>
+                    <input type="number"/>
+                </div>);
             break;
         case 'range':
-            input = (<>
-                <p></p>
-                <input type="range" />
-            </>);
+            input = (
+                <div className="wrap">
+                    <p>{props.guide}</p>
+                    <input type="range" style={props.style} />
+                </div>);
             break;
         case 'radio':
             input = (<>
-                <input type="range" />
+                <input type="radio" name={props.name} id={props.id} style={props.style}/>
+                    <label htmlFor={props.id}>{props.guide}</label>
             </>);
             break;
         default:
             input = <input {...props} />;  
     }
+    
     return input;
 }
 

@@ -17,7 +17,7 @@ import Input from '../../Components/UI/Input/Input';
 class Calculator extends Component {
     render() {
         const defaults = {
-            defaultUnit: 'M', //type 'I' for Imperial | 'M' for Metric
+            defaultUnit: 'I', //type 'I' for Imperial | 'M' for Metric
             colorTheme: {
                 color1: '#394264', //Calculator background
                 color2: '#11A8AB', //Interactive element.
@@ -27,11 +27,11 @@ class Calculator extends Component {
         }
         return (
             <>
-                <Switch>
+                {/* <Switch>
                     <Route path="/imperial" component={ImperialUnits} />
                     <Route path="/metric" exact component={MetricUnits} />
                     <Route path="/" component={defaults.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
-                </Switch>
+                </Switch> */}
                 <FlipCard>
                     <Front>
                         <FrontLayout>
@@ -39,21 +39,28 @@ class Calculator extends Component {
                                 <Tabs />
                             </Field>
                             <Field label="age">
-                                <Input type="number" />
+                                <Input type="number" guide="years"/>
                             </Field>
                             <Field label="gender">
-
+                                <div className="radioContainer">
+                                    <Input type="radio" name="gender" id="male" guide="male" />
+                                </div>
+                                <div className="radioContainer">
+                                    <Input type="radio" name="gender" id="female" guide="female" />
+                                </div>
                             </Field>
-                            <Field label="height">
-
-                            </Field> 
-                            <Field label="weight">
-
-                            </Field> 
+                            <Switch>
+                                    <Route path="/imperial" component={ImperialUnits} />
+                                    <Route path="/metric" exact component={MetricUnits} />
+                                    <Route path="/" component={defaults.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
+                            </Switch> 
                             <Field label="activity">
-
+                                <Input type="range" />
                             </Field> 
                             <Field label="goal">
+                                <Input type="range" />
+                            </Field> 
+                            <Field>
 
                             </Field> 
                         </FrontLayout>

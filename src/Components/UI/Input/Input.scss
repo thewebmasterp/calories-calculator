@@ -1,21 +1,146 @@
 p {
     display: inline;
     position: absolute;
-    transform: translate(16px, -16px);
+    transform: translate(14px, -14px);
+    text-transform: uppercase;
+    font-size: 0.8em;
 }
 
-input[type="number"] {
-    background: red;
-    height: 20px;
-    padding-top: 14px !important;
-    padding-bottom: 6px !important;
-    padding-left: 6px !important;
-    font-size: 1.4em;
+$radio-ball-bg-col: blue;
+$radio-ballINball-bg-col: red;
+.wrap {
     width: 100%;
-    border: none;
-    padding: 0;
-    outline: none;
-    &:focus {
+    input[type="number"] {
+        background: red;
+        height: 20px;
+        padding-top: 14px !important;
+        padding-bottom: 6px !important;
+        padding-left: 6px !important;
+        font-size: 1.4em;
+        width: calc(100% - 6px);
+        border: none;
+        padding: 0;
         outline: none;
+        &:focus {
+            outline: none;
+        }
     }
+}
+
+
+/*Radio Inputs*/
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label { 
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid $radio-ball-bg-col;
+    border-radius: 100%;
+    background: $radio-ball-bg-col;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: $radio-ballINball-bg-col;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    -moz-transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+}
+
+
+$color: red;
+@mixin thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: $color;
+    cursor: pointer;
+}
+@mixin range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: $color;
+}
+input[type=range] {
+    background: transparent;
+	height: 25px;
+	-webkit-appearance: none;
+	margin: 10px 0;
+	width: 100%;
+	&:focus {
+		outline: none;
+		&::-webkit-slider-runnable-track {
+			background: $color;
+		}
+		&::-ms-fill-lower {
+			background: $color;
+		}
+		&::-ms-fill-upper {
+			background: $color;
+		}
+	}
+	&::-webkit-slider-runnable-track {
+        @include range-track;
+	}
+	&::-webkit-slider-thumb {
+        @include thumb;
+        -webkit-appearance: none;
+        margin-top: -7px;
+	}
+	&::-moz-range-track {
+		@include range-track;
+	}
+	&::-moz-range-thumb {
+        @include thumb;
+	}
+	&::-ms-track {
+        @include range-track;
+        box-shadow: none;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+	}
+	&::-ms-fill-lower, &::-ms-fill-upper{
+		background: $color;
+		border-radius: 2px;
+	}
+	&::-ms-thumb {
+        margin-top: 1px;
+        @include thumb;
+	}
 }
