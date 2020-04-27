@@ -101,7 +101,11 @@ input[type=range] {
 	height: 25px;
 	-webkit-appearance: none;
 	margin: 10px 0;
-	width: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: 0;
+    z-index: 400;
 	&:focus {
 		outline: none;
 		&::-webkit-slider-runnable-track {
@@ -143,4 +147,21 @@ input[type=range] {
         margin-top: 1px;
         @include thumb;
 	}
+}
+
+
+.backs {
+    background: lightgreen;
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    z-index: 300;
+    bottom: 0px;
+}
+
+.back {
+    background-color: white;
+    height: 100%;
+    display: inline-block;
 }

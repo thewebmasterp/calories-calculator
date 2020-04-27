@@ -55,10 +55,20 @@ class Calculator extends Component {
                                     <Route path="/" component={defaults.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
                             </Switch> 
                             <Field label="activity">
-                                <Input type="range" />
+                                <Input type="range" guides={{ //always the sum must be 100
+                                    one: 20,
+                                    two: 20,
+                                    three: 20,
+                                    four: 20,
+                                    five: 20,
+                                }} active="four"/>
                             </Field> 
                             <Field label="goal">
-                                <Input type="range" />
+                                <Input type="range" guides={{ //always the sum must be 100
+                                    one: 35,
+                                    two: 15,
+                                    three: 50,
+                                }} active="three" min="0" max="10" value="2"/>
                             </Field> 
                             <Field>
 
