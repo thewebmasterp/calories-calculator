@@ -103,9 +103,9 @@ input[type=range] {
 	margin: 10px 0;
     width: 100%;
 
-    position: absolute;
+    position: relative;
+    bottom: 40px;
     left: 0;
-    z-index: 400;
 	&:focus {
 		outline: none;
 		&::-webkit-slider-runnable-track {
@@ -146,7 +146,23 @@ input[type=range] {
 	&::-ms-thumb {
         margin-top: 1px;
         @include thumb;
-	}
+    }
+    &.customThumb {
+        @mixin customThumb {
+            position: relative;
+            z-index: 1;
+            width: 40px;
+            height: 30px;
+            background-color: lawngreen;
+            opacity: 0.5;
+            min-width: 18px;
+            max-width: 70px;
+            bottom: 7px;
+        }
+        &::-webkit-slider-thumb {@include customThumb
+        }&::-ms-thumb {@include customThumb
+        }&::-moz-range-thumb {@include customThumb}
+    }
 }
 
 
@@ -154,10 +170,6 @@ input[type=range] {
     background: lightgreen;
     height: 100%;
     width: 100%;
-
-    position: absolute;
-    z-index: 300;
-    bottom: 0px;
 }
 
 .back {

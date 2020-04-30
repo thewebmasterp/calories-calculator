@@ -12,6 +12,7 @@ import Front from '../../Components/UI/Flipcard/Front/Front';
 import Back from '../../Components/UI/Flipcard/Back/Back';
 import Tabs from '../../Components/UI/Tabs/Tabs';
 import Input from '../../Components/UI/Input/Input';
+import RangeOverlay from '../../Components/UI/Input/RangeOverlay/RangeOverlay';
 
 //soon gonna convert everything to hooks.
 class Calculator extends Component {
@@ -64,11 +65,7 @@ class Calculator extends Component {
                                 }} active="four"/>
                             </Field> 
                             <Field label="goal">
-                                <Input type="range" guides={{ //always the sum must be 100
-                                    one: 35,
-                                    two: 15,
-                                    three: 50,
-                                }} active="three" min="0" max="10" value="2"/>
+                                <RangeOverlay />
                             </Field> 
                             <Field>
 

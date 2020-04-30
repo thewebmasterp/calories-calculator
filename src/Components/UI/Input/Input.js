@@ -19,23 +19,26 @@ const textInput = (props) => {
             if ( !!Object.values(props.guides).length && Object.values(props.guides).reduce((a, b) => a + b) === 100 ) {
                 let backs = [];
                 let arr = Object.entries(props.guides);
-                console.log(arr);
                 for (let i = 0; i <= arr.length-1; i++) {
                     backs.push( <div key={arr[i][0]} className="back" style={{
                         width: `${arr[i][1]}%`,
-                        background: 'orange',
-                        background: (arr[i][0] == props.active) ? 'pink' : ''
+                        background: (arr[i][0] === props.active) ? 'pink' : 'orange',
+                        // position: 'absolute',
+                        // zIndex: ''
                     }}/> )
                 }
-                readyBacks = (<div className="backs">
+                readyBacks = (<div className="backs" style={{
+                    position: 'relative',
+                    // zIndex: '0' 
+                }}>
                     {backs.map(el => el)}
                 </div>);
             }
             input = (
                 <div className="wrap">
-                    <p>{props.guide}</p>
-                    <input type="range" style={props.style} defaultValue={props.value} min={props.min} max={props.max}/>
                     {readyBacks ? readyBacks : null}
+                    <p>{props.guide}</p>
+                    <input type="range" style={props.style} onChange={props.onchange} defaultValue={props.value} min={props.min} max={props.max} className={props.customThumb ? 'customThumb' : null}/>
                 </div>);
 
 
