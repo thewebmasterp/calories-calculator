@@ -23,9 +23,13 @@ $radio-ballINball-bg-col: $color2;
         border: none;
         padding: 0;
         outline: none;
+        color: $color2;
         &:focus {
             outline: none;
         }
+    }
+    .currency {
+        color: $color2;
     }
 }
 

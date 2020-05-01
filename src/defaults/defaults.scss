@@ -3,9 +3,11 @@ $color2: #11a8ab; //Interactive element.
 $color3: red; //on active
 $color4: white; //text
 $color5: #575e7b;
-$defaultUnit: M;
+$defaultUnit: M; //M for Metric   |   I for Imperial
+$defaultGender: F; //M for Male   |   F for Female
 $overlay: transparent;
 
 :export {
     defaultUnit: $defaultUnit;
+    defaultGender: $defaultGender;
 }

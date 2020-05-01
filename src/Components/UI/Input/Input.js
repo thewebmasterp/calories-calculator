@@ -8,7 +8,7 @@ const textInput = (props) => {
         case 'number':
             input = (
                 <div className="wrap" style={props.style}>
-                    <p>{props.guide}</p>
+                    <p className="currency">{props.guide}</p>
                     <input type="number"/>
                 </div>);
             break;
@@ -43,7 +43,7 @@ const textInput = (props) => {
             break;
         case 'radio':
             input = (<>
-                <input type="radio" name={props.name} id={props.id} style={props.style}/>
+                <input type="radio" name={props.name} id={props.id} style={props.style} onChange={props.change} checked={props.checked}/>
                     <label htmlFor={props.id}>{props.guide}</label>
             </>);
             break;

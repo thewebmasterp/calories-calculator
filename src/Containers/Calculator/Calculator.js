@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './Calculator.scss';
 import defaults from '../../defaults/defaults.scss';
@@ -20,6 +20,7 @@ import RangeActiv from '../../Components/UI/Input/RangeActiv/RangeActiv';
 
 const Calculator = () => {
     const [state, changeState] = useState({defaults: defaults});
+    const [gender, changeGender] = useState(state.defaults.defaultGender)
     return (
         <>
             <FlipCard>
@@ -33,10 +34,10 @@ const Calculator = () => {
                         </Field>
                         <Field label="gender">
                             <div className="radioContainer">
-                                <Input type="radio" name="gender" id="male" guide="male" />
+                                <Input type="radio" name="gender" id="male" guide="male" change={() => changeGender('M')} checked={gender === 'M'}/>{/*state.defaults.defaultUnit === 'M' ? true : false}/>*/}
                             </div>
                             <div className="radioContainer">
-                                <Input type="radio" name="gender" id="female" guide="female" />
+                                <Input type="radio" name="gender" id="female" guide="female" change={() => changeGender('F')} checked={gender === 'F'}/>{/*state.defaults.defaultUnit === 'F' ? true : false} />*/}
                             </div>
                         </Field>
                         <Switch>
