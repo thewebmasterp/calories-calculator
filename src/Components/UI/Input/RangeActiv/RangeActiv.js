@@ -8,33 +8,26 @@ const RangeActiv = (props) => {
 
     const changeHandler = (event) => {
         let caller = event.target;
-        console.log(active);
-
         if (caller.value < ratios[0]) {
             changeActive(() => 'one');
-
         } else if (caller.value <  ratios[0]+ratios[1]) {
             changeActive(() => 'two');
-
         } else if (caller.value < ratios[0]+ratios[1]+ratios[2]) {
             changeActive(() =>'three');
-
         } else if (caller.value < ratios[0]+ratios[1]+ratios[2]+ratios[3]) {
             changeActive(() => 'four');
-
         } else if (caller.value < ratios[0]+ratios[1]+ratios[2]+ratios[3]+ratios[4]) {
             changeActive(() => 'five');
-
         }
     } 
     return (
-        <Input type="range" guides={{ //always the sum must be 100
-            one: 20,
-            two: 20,
-            three: 20,
-            four: 20,
-            five: 20,
-        }} onchange={(a) => changeHandler(a)} active={active} min="0" max="100"/>
+        <Input onchange={(a) => changeHandler(a)} type="range" guides={{ //always the sum must be 100
+            one: ratios[0],
+            two: ratios[1],
+            three: ratios[2],
+            four: ratios[3],
+            five: ratios[4],
+        }} active={active} min="0" max="100" value="0"/>
     )
 };
 

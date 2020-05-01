@@ -154,7 +154,7 @@ input[type=range] {
             background-color: $overlay;
             opacity: 0.5;
             min-width: 18px;
-            max-width: 70px;
+            max-width: 80px;
             bottom: 7px;
         }
         &::-webkit-slider-thumb {@include customThumb
@@ -186,19 +186,16 @@ input[type=range] {
     border-width: 1px;
     border-style: solid;
     border-color: transparent;
-    display: inline-block;
-    position: relative;
-    z-index: 1; 
+    z-index: 1;
 }
 
 .back:before {
     @include pseudo;
-    // background:red;
-    // top: -30px;
+    background: $track-background;
 }
 .back:after {
     @include pseudo;
-    right: 1px;
+    background: $track-background;
 }
 
 .back[data-active="active"], .back[data-active="active"] {

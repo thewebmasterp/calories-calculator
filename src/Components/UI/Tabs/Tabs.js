@@ -28,5 +28,3 @@ const Tabs = (props) => {
 };
 
 export default Tabs;
-
-//className={`button ${props.active == 'I' ? 'active' : '' }`}
