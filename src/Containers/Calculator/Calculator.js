@@ -15,6 +15,7 @@ import Tabs from '../../Components/UI/Tabs/Tabs';
 import Input from '../../Components/UI/Input/Input';
 
 import RangeGoal from '../../Components/UI/Input/RangeGoal/RangeGoal';
+import RangeActiv from '../../Components/UI/Input/RangeActiv/RangeActiv';
 
 //soon gonna convert everything to hooks.
 class Calculator extends Component {
@@ -47,13 +48,7 @@ class Calculator extends Component {
                                     <Route path="/" component={defaults.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
                             </Switch> 
                             <Field label="activity">
-                                <Input type="range" guides={{ //always the sum must be 100
-                                    one: 20,
-                                    two: 20,
-                                    three: 20,
-                                    four: 20,
-                                    five: 20,
-                                }} active="four"/>
+                                <RangeActiv />
                             </Field> 
                             <Field label="goal">
                                 <RangeGoal />
