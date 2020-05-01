@@ -22,10 +22,7 @@ const textInput = (props) => {
                 for (let i = 0; i <= arr.length-1; i++) {
                     backs.push( <div key={arr[i][0]} className="back" style={{
                         width: `${arr[i][1]}%`,
-                        background: (arr[i][0] === props.active) ? 'pink' : 'orange',
-                        // position: 'absolute',
-                        // zIndex: ''
-                    }}/> )
+                    }} data-active={(arr[i][0] === props.active) ? 'active' : ''} ><span /></div>);
                 }
                 readyBacks = (<div className="backs" style={{
                     position: 'relative',

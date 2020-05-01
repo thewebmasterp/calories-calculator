@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './Calculator.scss';
+import defaults from '../../defaults/defaults.scss';
 
 import ImperialUnits from './ImperialUnits/ImperialUnits';
 import MetricUnits from './MetricUnits/MetricUnits';
@@ -12,32 +13,22 @@ import Front from '../../Components/UI/Flipcard/Front/Front';
 import Back from '../../Components/UI/Flipcard/Back/Back';
 import Tabs from '../../Components/UI/Tabs/Tabs';
 import Input from '../../Components/UI/Input/Input';
-import RangeOverlay from '../../Components/UI/Input/RangeOverlay/RangeOverlay';
+
+import RangeGoal from '../../Components/UI/Input/RangeGoal/RangeGoal';
 
 //soon gonna convert everything to hooks.
 class Calculator extends Component {
+    state = {
+        defaults: defaults
+    }
     render() {
-        const defaults = {
-            defaultUnit: 'I', //type 'I' for Imperial | 'M' for Metric
-            colorTheme: {
-                color1: '#394264', //Calculator background
-                color2: '#11A8AB', //Interactive element.
-                color3: 'red', //on active
-                color4: 'white', //text content
-            }
-        }
         return (
             <>
-                {/* <Switch>
-                    <Route path="/imperial" component={ImperialUnits} />
-                    <Route path="/metric" exact component={MetricUnits} />
-                    <Route path="/" component={defaults.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
-                </Switch> */}
                 <FlipCard>
                     <Front>
                         <FrontLayout>
                             <Field whole>
-                                <Tabs />
+                                <Tabs active={this.state.defaults.defaultUnit}/>
                             </Field>
                             <Field label="age">
                                 <Input type="number" guide="years"/>
@@ -65,7 +56,7 @@ class Calculator extends Component {
                                 }} active="four"/>
                             </Field> 
                             <Field label="goal">
-                                <RangeOverlay />
+                                <RangeGoal />
                             </Field> 
                             <Field>
 

@@ -9,4 +9,7 @@ a.button{
             outline: none;
         }
     }
+    &.active {
+        background: red;
+    }
 }

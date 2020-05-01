@@ -1,0 +1,11 @@
+$color1: #394264; //Calculator background
+$color2: #11a8ab; //Interactive element.
+$color3: red; //on active
+$color4: white; //text
+$color5: rgba(300, 300, 300, 0.15);
+$defaultUnit: M;
+$overlay: transparent;
+
+:export {
+    defaultUnit: $defaultUnit;
+}

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Input from '../Input';
-import './RangeOverlay.scss';
+import './RangeGoal.scss';
 
-class RangeOverlay extends Component {
+class RangeGoal extends Component {
     state = {
         ratios: [70, 15, 15],
         defValue: 0,
         active: 'one',
         thumbPos: 0,
-        thumbWidth: 20,
+        thumbWidth: 2,
     }
     changeHandler = (a) => {
         let caller = a.target;
@@ -46,4 +46,4 @@ class RangeOverlay extends Component {
     }
 }
 
-export default RangeOverlay;
+export default RangeGoal;

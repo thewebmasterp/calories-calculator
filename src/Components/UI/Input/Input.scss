@@ -1,3 +1,5 @@
+@import '../../../defaults/defaults.scss';
+
 p {
     display: inline;
     position: absolute;
@@ -6,12 +8,12 @@ p {
     font-size: 0.8em;
 }
 
-$radio-ball-bg-col: blue;
-$radio-ballINball-bg-col: red;
+$radio-ball-bg-col: $color4;
+$radio-ballINball-bg-col: $color2;
 .wrap {
     width: 100%;
     input[type="number"] {
-        background: red;
+        background: $color5;
         height: 20px;
         padding-top: 14px !important;
         padding-bottom: 6px !important;
@@ -81,20 +83,27 @@ $radio-ballINball-bg-col: red;
 }
 
 
-$color: red;
+$color-interactive: $color2;
+
+$track-height: 5px;
+$track-background: $color5;
+
+
 @mixin thumb {
     height: 18px;
     width: 18px;
     border-radius: 25px;
-    background: $color;
+    background: $color-interactive;
     cursor: pointer;
+    z-index: 3;
+    position: relative;
 }
 @mixin range-track {
     width: 100%;
-    height: 5px;
+    height: $track-height;
     cursor: pointer;
     animate: 0.2s;
-    background: $color;
+    background: $track-background;
 }
 input[type=range] {
     background: transparent;
@@ -104,20 +113,11 @@ input[type=range] {
     width: 100%;
 
     position: relative;
-    bottom: 40px;
+    bottom: 42.5px;
     left: 0;
-	&:focus {
-		outline: none;
-		&::-webkit-slider-runnable-track {
-			background: $color;
-		}
-		&::-ms-fill-lower {
-			background: $color;
-		}
-		&::-ms-fill-upper {
-			background: $color;
-		}
-	}
+    &:focus {
+        outline: none;
+    }
 	&::-webkit-slider-runnable-track {
         @include range-track;
 	}
@@ -140,7 +140,7 @@ input[type=range] {
         color: transparent;
 	}
 	&::-ms-fill-lower, &::-ms-fill-upper{
-		background: $color;
+		background: $color-interactive;
 		border-radius: 2px;
 	}
 	&::-ms-thumb {
@@ -149,11 +149,9 @@ input[type=range] {
     }
     &.customThumb {
         @mixin customThumb {
-            position: relative;
-            z-index: 1;
             width: 40px;
             height: 30px;
-            background-color: lawngreen;
+            background-color: $overlay;
             opacity: 0.5;
             min-width: 18px;
             max-width: 70px;
@@ -167,13 +165,55 @@ input[type=range] {
 
 
 .backs {
-    background: lightgreen;
     height: 100%;
     width: 100%;
 }
 
 .back {
-    background-color: white;
     height: 100%;
+    display: inline-flex;
+    position: relative;
+    // bottom: 4px;
+    justify-content: space-between;
+    align-items:center
+}
+
+@mixin pseudo {
+    position: relative;
+    top: 1px;
+    content: '';
+    height: $track-height + 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
     display: inline-block;
+    position: relative;
+    z-index: 1; 
+}
+
+.back:before {
+    @include pseudo;
+    // background:red;
+    // top: -30px;
+}
+.back:after {
+    @include pseudo;
+    right: 1px;
+}
+
+.back[data-active="active"], .back[data-active="active"] {
+    &:before, &:after {
+        // background-color: $color1 !important;
+        border-color: $color-interactive;
+    }
+    span {
+        background-color: $color-interactive !important;
+    }
+}
+.back span {
+    display: block;
+    height: $track-height;
+    width: 100%;
+    position: relative;
+    z-index: 1; 
 }
