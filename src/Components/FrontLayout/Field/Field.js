@@ -8,7 +8,9 @@ const field = (props) => {
             {(props.label && !props.whole) ? 
                 <div className="label" >{props.label}</div> : null
             }
-            <div className="content">
+            <div className="content" style={{
+                justifyContent: props.end ? 'flex-end' : ''
+            }}>
                 {props.children}
             </div>
         </div>

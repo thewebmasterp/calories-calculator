@@ -1,0 +1,16 @@
+@import '../../../defaults/defaults.scss';
+
+button {
+    background: $color2;
+    outline: none;
+    border-width: 0;
+    color: $color4;
+    padding: 0 20px;
+    text-transform: uppercase;
+    &:focus {
+        outline: none;
+    }
+    &:active {
+        background: $color3
+    }
+}

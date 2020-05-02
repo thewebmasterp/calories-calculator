@@ -13,6 +13,7 @@ import Front from '../../Components/UI/Flipcard/Front/Front';
 import Back from '../../Components/UI/Flipcard/Back/Back';
 import Tabs from '../../Components/UI/Tabs/Tabs';
 import Input from '../../Components/UI/Input/Input';
+import Button from '../../Components/UI/Button/Button';
 
 import RangeGoal from '../../Components/UI/Input/RangeGoal/RangeGoal';
 import RangeActiv from '../../Components/UI/Input/RangeActiv/RangeActiv';
@@ -51,8 +52,10 @@ const Calculator = () => {
                         <Field label="goal">
                             <RangeGoal />
                         </Field> 
-                        <Field>
-
+                        <Field end>
+                            <Button>blah</Button>
+                            <Button>blah</Button>
+                            <Button>blah</Button>
                         </Field> 
                     </FrontLayout>
                 </Front>
