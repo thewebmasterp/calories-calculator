@@ -1,15 +1,9 @@
 @import '../../../defaults/defaults.scss';
 
-p {
-    display: inline;
-    position: absolute;
-    transform: translate(14px, -14px);
-    text-transform: uppercase;
-    font-size: 0.8em;
-}
-
 $radio-ball-bg-col: $color4;
 $radio-ballINball-bg-col: $color2;
+$balls-size: 20px;
+
 .wrap {
     width: 100%;
     input[type="number"] {
@@ -30,6 +24,15 @@ $radio-ballINball-bg-col: $color2;
     }
     .currency {
         color: $color2;
+        display: inline;
+        position: absolute;
+        transform: translate(14px, -14px);
+        text-transform: uppercase;
+        font-size: 0.8em;
+        &.dynamic {
+            left: -10px;
+            bottom: 5px;
+        }
     }
 }
 
@@ -54,8 +57,8 @@ $radio-ballINball-bg-col: $color2;
     position: absolute;
     left: 0;
     top: 0;
-    width: 18px;
-    height: 18px;
+    width: $balls-size;
+    height: $balls-size;
     border: 1px solid $radio-ball-bg-col;
     border-radius: 100%;
     background: $radio-ball-bg-col;
@@ -63,8 +66,8 @@ $radio-ballINball-bg-col: $color2;
 [type="radio"]:checked + label:after,
 [type="radio"]:not(:checked) + label:after {
     content: '';
-    width: 12px;
-    height: 12px;
+    width: $balls-size - 6px;
+    height: $balls-size - 6px;
     background: $radio-ballINball-bg-col;
     position: absolute;
     top: 4px;
@@ -90,12 +93,12 @@ $radio-ballINball-bg-col: $color2;
 $color-interactive: $color2;
 
 $track-height: 5px;
-$track-background: $color5;
+$track-background: $color2;
 
 
 @mixin thumb {
-    height: 18px;
-    width: 18px;
+    height: $balls-size;
+    width: $balls-size;
     border-radius: 25px;
     background: $color-interactive;
     cursor: pointer;
@@ -182,15 +185,16 @@ input[type=range] {
     align-items:center
 }
 
+
 @mixin pseudo {
     position: relative;
-    top: 1px;
     content: '';
-    height: $track-height + 3px;
+    height: $track-height - 2px;
     border-width: 1px;
     border-style: solid;
     border-color: transparent;
     z-index: 1;
+    border-color: $color6;
 }
 
 .back:before {
@@ -204,11 +208,10 @@ input[type=range] {
 
 .back[data-active="active"], .back[data-active="active"] {
     &:before, &:after {
-        // background-color: $color1 !important;
-        border-color: $color-interactive;
+        border-color: $color6 + $color6;
     }
     span {
-        background-color: $color-interactive !important;
+        background-color: $color6 !important;
     }
 }
 .back span {

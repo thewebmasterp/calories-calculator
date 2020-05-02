@@ -1,12 +1,15 @@
 @import '../../../../defaults/defaults.scss';
+@import '../Input.scss';
+
 
 .overlay{
     background: $color2;
-    width: 18px;
-    height: 18px;
+    width: $balls-size;
+    height: $balls-size;
     border-radius: 50px;
     position: absolute;
-    top: 12px; 
+    top: $balls-size - 9px; //not true in every case*
     z-index: 2;
     transition-property: left;
+
 }

@@ -33,8 +33,8 @@ const textInput = (props) => {
             }
             input = (
                 <div className="wrap">
+                    <p className="currency dynamic">{props.guide}</p>
                     {readyBacks ? readyBacks : null}
-                    <p>{props.guide}</p>
                     <input type="range" style={props.style} onChange={props.onchange} defaultValue={props.value} min={props.min} max={props.max} className={props.customThumb ? 'customThumb' : null}/>
                 </div>);
 
