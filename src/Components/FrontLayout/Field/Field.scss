@@ -27,8 +27,9 @@
 
         position: relative;
         // z-index: 100;
-    }
-    button {
-        margin-left: 10px;
+        &.end {
+            justify-content: flex-end;
+            button { margin-left: 10px }
+        }
     }
 }

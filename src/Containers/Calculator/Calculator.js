@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './Calculator.scss';
 import defaults from '../../defaults/defaults.scss';
@@ -22,6 +22,7 @@ import RangeActiv from '../../Components/UI/Input/RangeActiv/RangeActiv';
 const Calculator = () => {
     const [state, changeState] = useState({defaults: defaults});
     const [gender, changeGender] = useState(state.defaults.defaultGender)
+
     return (
         <>
             <FlipCard>
@@ -53,9 +54,9 @@ const Calculator = () => {
                             <RangeGoal />
                         </Field> 
                         <Field end>
-                            <Button>blah</Button>
-                            <Button>blah</Button>
-                            <Button>blah</Button>
+                            <Button classes="btn">blah</Button>
+                            <Button classes="btn">blah</Button>
+                            <Button classes="btn">blah</Button>
                         </Field> 
                     </FrontLayout>
                 </Front>
