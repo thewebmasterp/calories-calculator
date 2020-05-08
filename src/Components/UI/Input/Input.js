@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Input.scss';
+import { BsConeStriped } from 'react-icons/bs';
 
-const textInput = (props) => {
+const TextInput = (props) => {
     let input;
-    // eslint-disable-next-line default-case
+    const [labelState, changeLabelState] = useState('0');
+    let value = ''; //the value of the text input
+
+    const determine = (focus) => {
+        console.log(value);
+        if (focus === 'in') {
+            changeLabelState('1');
+        } else if (focus === 'out' && value.length === 0) {
+            changeLabelState('0')
+        }
+    }
+
     switch(props.type) {
         case 'number':
+
             input = (
-                <div className="wrap" style={props.style}>
-                    <p className="currency">{props.guide}</p>
+                <div    className="wrap" 
+                        style={props.style} 
+                        onFocus={()=>determine('in')} 
+                        onBlur={()=>determine('out')}
+                        onChange={(event)=>{value = event.target.value}}>
+                    <p className="currency" 
+                        style={{'opacity': labelState}}
+                        onFocus={()=>{console.log('bla')}}>{props.guide}</p>
                     <input type="number"/>
                 </div>);
             break;
@@ -43,7 +62,7 @@ const textInput = (props) => {
             break;
         case 'radio':
             input = (<>
-                <input type="radio" name={props.name} id={props.id} style={props.style} onChange={props.change} checked={props.checked}/>
+                <input type="radio" name={props.name} id={props.id} style={props.style} onChange={props.change} checked={props.checked} />
                     <label htmlFor={props.id}>{props.guide}</label>
             </>);
             break;
@@ -54,4 +73,4 @@ const textInput = (props) => {
     return input;
 }
 
-export default textInput;
+export default TextInput;

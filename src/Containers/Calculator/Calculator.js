@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './Calculator.scss';
 import defaults from '../../defaults/defaults.scss';
@@ -6,6 +6,7 @@ import defaults from '../../defaults/defaults.scss';
 import ImperialUnits from './ImperialUnits/ImperialUnits';
 import MetricUnits from './MetricUnits/MetricUnits';
 import FrontLayout from './../../Components/FrontLayout/FrontLayout';
+import Settings from '../../Components/Settings/Settings';
 
 import Field from './../../Components/FrontLayout/Field/Field';
 import FlipCard from '../../Components/UI/Flipcard/Flipcard';
@@ -18,45 +19,67 @@ import Button from '../../Components/UI/Button/Button';
 import RangeGoal from '../../Components/UI/Input/RangeGoal/RangeGoal';
 import RangeActiv from '../../Components/UI/Input/RangeActiv/RangeActiv';
 
+import { BsFillGearFill, BsArrowClockwise } from "react-icons/bs";
+
 
 const Calculator = () => {
-    const [state, changeState] = useState({defaults: defaults});
-    const [gender, changeGender] = useState(state.defaults.defaultGender)
+    const [gender, changeGender] = useState(defaults.defaultGender);
+    const [flipCardDeg, changeFCDeg] = useState(0);
+
+    const TOTALhandler = () => {
+        console.log('TOTAL');
+
+        //VALIDATE AND IF EVERYTHING IS FINE:
+        
+        changeFCDeg(180);
+
+    }
+    const SettingsHandler = () => {
+        console.log('SETTINGS');
+    }
+    const ResetHandler = () => {
+        console.log('RESET');
+    }
 
     return (
         <>
-            <FlipCard>
+            <FlipCard flip={flipCardDeg}>
                 <Front>
                     <FrontLayout>
                         <Field whole>
-                            <Tabs active={state.defaults.defaultUnit}/>
+                            <Tabs active={defaults.defaultUnit}/>
                         </Field>
                         <Field label="age">
                             <Input type="number" guide="years"/>
                         </Field>
-                        <Field label="gender">
+                        <Field label="gender" hover={''} >
                             <div className="radioContainer">
-                                <Input type="radio" name="gender" id="male" guide="male" change={() => changeGender('M')} checked={gender === 'M'}/>{/*state.defaults.defaultUnit === 'M' ? true : false}/>*/}
+                                <Input type="radio" name="gender" id="male" guide="male" change={() => changeGender('M')} checked={gender === 'M'}/>
                             </div>
                             <div className="radioContainer">
-                                <Input type="radio" name="gender" id="female" guide="female" change={() => changeGender('F')} checked={gender === 'F'}/>{/*state.defaults.defaultUnit === 'F' ? true : false} />*/}
+                                <Input type="radio" name="gender" id="female" guide="female" change={() => changeGender('F')} checked={gender === 'F'}/>
                             </div>
                         </Field>
                         <Switch>
                                 <Route path="/imperial" component={ImperialUnits} />
                                 <Route path="/metric" exact component={MetricUnits} />
-                                <Route path="/" component={state.defaults.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
+                                <Route path="/" component={defaults.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
                         </Switch> 
                         <Field label="activity">
                             <RangeActiv />
                         </Field> 
                         <Field label="goal">
                             <RangeGoal />
-                        </Field> 
+                        </Field>
+                        <Switch>
+                                <Route path="/imperial/settings" component={Settings} />
+                                <Route path="/metric/settings" exact component={Settings} />
+                                <Route path="/settings" component={Settings} />
+                        </Switch>
                         <Field end>
-                            <Button classes="btn">blah</Button>
-                            <Button classes="btn">blah</Button>
-                            <Button classes="btn">blah</Button>
+                            <Button click={SettingsHandler} icon><BsFillGearFill style={{fontSize: '1.5em'}} /></Button>
+                            <Button click={ResetHandler} icon><BsArrowClockwise style={{fontSize: '1.5em'}} /></Button>
+                            <Button click={TOTALhandler}>total</Button>
                         </Field> 
                     </FrontLayout>
                 </Front>

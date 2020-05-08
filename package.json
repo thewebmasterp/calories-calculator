@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
     "react-ripple-effect": "^1.0.4",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",

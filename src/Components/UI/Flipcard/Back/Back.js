@@ -3,7 +3,9 @@ import './Back.scss';
 
 const back = (props) => {
     return (
-        <div className="Back">
+        <div className="Back" style={{
+            height: "500px" 
+        }}>
             {props.children}
         </div>
     )

@@ -12,12 +12,13 @@ $balls-size: 20px;
         padding-top: 14px !important;
         padding-bottom: 6px !important;
         padding-left: 6px !important;
-        font-size: 1.4em;
+        font-size: 1.5em;
         width: calc(100% - 6px);
         border: none;
         padding: 0;
         outline: none;
         color: $color2;
+        font-family: 'Oswald', sans-serif;
         &:focus {
             outline: none;
         }
@@ -28,10 +29,18 @@ $balls-size: 20px;
         position: absolute;
         transform: translate(14px, -14px);
         text-transform: uppercase;
-        font-size: 0.8em;
+        font-size: 0.75em;
+        top: 4px;
+        transition: opacity 300ms linear;
+        user-select: none;
+        pointer-events: none;
         &.dynamic {
+            top: 0;
             left: -10px;
             bottom: 5px;
+        }
+        &:hover {
+            cursor: text;
         }
     }
 }
@@ -170,22 +179,6 @@ input[type=range] {
     }
 }
 
-
-.backs {
-    height: 100%;
-    width: 100%;
-}
-
-.back {
-    height: 100%;
-    display: inline-flex;
-    position: relative;
-    // bottom: 4px;
-    justify-content: space-between;
-    align-items:center
-}
-
-
 @mixin pseudo {
     position: relative;
     content: '';
@@ -197,13 +190,29 @@ input[type=range] {
     border-color: $color6;
 }
 
+.backs {
+    height: 100%;
+    width: 100%;
+    // pointer-events: none;
+}
+
+.back {
+    height: 100%;
+    display: inline-flex;
+    position: relative;
+    // bottom: 4px;
+    justify-content: space-between;
+    align-items:center;
+    pointer-events: none;
+}
+
 .back:before {
     @include pseudo;
-    background: $track-background;
+    // background: $track-background;
 }
 .back:after {
     @include pseudo;
-    background: $track-background;
+    // background: $track-background;
 }
 
 .back[data-active="active"], .back[data-active="active"] {
