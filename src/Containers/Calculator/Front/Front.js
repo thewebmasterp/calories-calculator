@@ -15,7 +15,8 @@ import Settings from '../../../Components/FrontLayout/Settings/Settings';
 import { BsFillGearFill, BsArrowClockwise } from "react-icons/bs";
 
 const Front = (props) => {
-    const [gender, changeGender] = useState(props.defs.defaultGender);
+
+    // const [gender, changeGender] = useState(props.defs.defaultGender);
     let currentPath = useLocation().pathname;
 
     const TOTALhandler = () => {
@@ -47,46 +48,46 @@ const Front = (props) => {
 
     return (
         <FrontCard>
-                    <FrontLayout>
-                        <Field whole>
-                            <Tabs active={props.defs.defaultUnit}/>
-                        </Field>
-                        <Field label="age">
-                            <Input type="number" guide="years"/>
-                        </Field>
-                        <Field label="gender" hover={''} >
-                            <div className="radioContainer">
-                                <Input type="radio" name="gender" id="male" guide="male" change={() => changeGender('M')} checked={gender === 'M'}/>
-                            </div>
-                            <div className="radioContainer">
-                                <Input type="radio" name="gender" id="female" guide="female" change={() => changeGender('F')} checked={gender === 'F'}/>
-                            </div>
-                        </Field>
-                        <Switch>
-                                <Route path="/imperial" component={ImperialUnits} />
-                                <Route path="/metric" exact component={MetricUnits} />
-                                <Route path="/" component={props.defs.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
-                        </Switch> 
-                        <Field label="activity">
-                            <RangeActiv />
-                        </Field> 
-                        <Field label="goal">
-                            <RangeGoal />
-                        </Field>
-                        <Switch>
-                                <Route path="/imperial/settings" component={Settings} />
-                                <Route path="/metric/settings" exact component={Settings} />
-                                <Route path="/settings" component={Settings} />
-                        </Switch>
-                        <Field end>
-                            <NavLink to={currentPath}>
-                                <Button click={SettingsHandler} icon noRipple><BsFillGearFill style={{fontSize: '1.5em'}} /></Button>
-                            </NavLink>
-                            <Button click={ResetHandler} icon><BsArrowClockwise style={{fontSize: '1.5em'}} /></Button>
-                            <Button click={TOTALhandler}>total</Button>
-                        </Field> 
-                    </FrontLayout>
-                </FrontCard>
+            <FrontLayout>
+                <Field whole>
+                    <Tabs active={props.defs.defaultUnit}/>
+                </Field>
+                <Field label="age">
+                    <Input change={(event) => props.redux.write.setAge(event.target.value)} type="number" guide="years"/>
+                </Field>
+                <Field label="gender" >
+                    <div className="radioContainer">
+                        <Input type="radio" name="gender" id="male" guide="male" change={() => props.redux.write.setGender('male')} checked={props.redux.read.gender === 'male'} />
+                    </div>
+                    <div className="radioContainer">
+                        <Input type="radio" name="gender" id="female" guide="female" change={() => props.redux.write.setGender('female')} checked={props.redux.read.gender === 'female'}/>
+                    </div>
+                </Field>
+                <Switch>
+                        <Route path="/imperial" component={ImperialUnits} />
+                        <Route path="/metric" exact component={MetricUnits} />
+                        <Route path="/" component={props.defs.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
+                </Switch> 
+                <Field label="activity">
+                    <RangeActiv />
+                </Field> 
+                <Field label="goal">
+                    <RangeGoal />
+                </Field>
+                <Switch>
+                        <Route path="/imperial/settings" component={Settings} />
+                        <Route path="/metric/settings" exact component={Settings} />
+                        <Route path="/settings" component={Settings} />
+                </Switch>
+                <Field end>
+                    <NavLink to={currentPath}>
+                        <Button click={SettingsHandler} icon noRipple><BsFillGearFill style={{fontSize: '1.5em'}} /></Button>
+                    </NavLink>
+                    <Button click={ResetHandler} icon><BsArrowClockwise style={{fontSize: '1.5em'}} /></Button>
+                    <Button click={TOTALhandler}>total</Button>
+                </Field> 
+            </FrontLayout>
+        </FrontCard>
     )
 }
 

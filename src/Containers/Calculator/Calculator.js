@@ -9,14 +9,15 @@ import Front from '../../Containers/Calculator/Front/Front';
 import Back from '../../Containers/Calculator/Back/Back';
 
 const Calculator = (props) => {
+
     const [flipCardDeg, changeFCDeg] = useState(0);
 
 
     return (
         <>
             <FlipCard flip = {flipCardDeg}>
-                <Front defs = {defaults} flip={(deg) => {changeFCDeg(deg)}} />
-                <Back defs = {defaults} flip={(deg) => {changeFCDeg(deg)}}/>
+                <Front redux={ props } defs = {defaults} flip={(deg) => {changeFCDeg(deg)}} />
+                <Back redux={ props } defs = {defaults} flip={(deg) => {changeFCDeg(deg)}}/>
             </FlipCard>
         </>
     );
@@ -24,13 +25,22 @@ const Calculator = (props) => {
 
 const mapStateToProps = state => {
     return {
-        ctr: state.counter
+        read: state 
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({type: 'INCREMENT'})
+        write: {
+            setAge: (age) => dispatch({ type: 'SET_AGE', payload: age }),
+            setGender: (gender) => dispatch({ type: 'SET_GENDER', payload: gender }),
+            setActivity: (percent) => dispatch({ type: 'SET_ACTIVITY', payload: percent }),
+            setGoal: (percent) => dispatch({ type: 'SET_GOAL', payload: percent }),
+            setMunitHeight: (centimeters) => dispatch({ type: 'SET_M_UNIT_HEIGHT', payload: centimeters }),
+            setMunitWeight: (kilograms) => dispatch({ type: 'SET_M_UNIT_WEIGHT', payload: kilograms }),
+            setIunitHeight: (feet, inches) => dispatch({ type: 'SET_I_UNIT_HEIGHT', payload: {feet: feet, inches: inches} }),
+            setIunitWeight: (pounds) => dispatch({ type: 'SET_I_UNIT_WEIGHT', payload: pounds }),
+        }
     }
 }
 

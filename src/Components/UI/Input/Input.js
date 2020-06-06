@@ -8,7 +8,6 @@ const TextInput = (props) => {
     let value = ''; //the value of the text input
 
     const determine = (focus) => {
-        console.log(value);
         if (focus === 'in') {
             changeLabelState('1');
         } else if (focus === 'out' && value.length === 0) {
@@ -27,8 +26,8 @@ const TextInput = (props) => {
                         onChange={(event)=>{value = event.target.value}}>
                     <p className="currency" 
                         style={{'opacity': labelState}}
-                        onFocus={()=>{console.log('bla')}}>{props.guide}</p>
-                    <input type="number"/>
+                        onFocus={()=>{ /*console.log('bla')*/ }}>{props.guide}</p>
+                    <input min={props.min} max={props.max}  onChange={props.change} type="number"/>
                 </div>);
             break;
         case 'range':
