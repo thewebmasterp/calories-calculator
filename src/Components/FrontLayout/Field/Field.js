@@ -1,7 +1,7 @@
 import React from 'react';
 import './Field.scss';
 
-const field = (props) => {
+const Field = (props) => {
 
     return (
         <div className={`Field ${props.whole?'whole':''} ${props.auto?'auto':''}`}>
@@ -15,7 +15,7 @@ const field = (props) => {
     );
 }
 
-export default field;
+export default Field;
 
 
  //style={{...props.style, height: props.auto ? 'auto' : ''}}

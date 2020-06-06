@@ -1,7 +1,7 @@
 import React from 'react';
-import './Front.scss'
+import './FrontCard.scss'
 
-const front = (props) => {
+const FrontCard = (props) => {
     return (
         <div className="Front">
             {props.children}
@@ -9,4 +9,4 @@ const front = (props) => {
     )
 };
 
-export default front;
+export default FrontCard;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Settings.scss';
-import Field from '../FrontLayout/Field/Field';
-import Input from '../UI/Input/Input';
-import defaults from '../../defaults/defaults.scss';
+import Field from '../../FrontLayout/Field/Field';
+import Input from '../../UI/Input/Input';
+import defaults from '../../../defaults/defaults.scss';
 
 const Settings = () => {
     const [formula, changeFormula] = useState(defaults.defaultFormula);

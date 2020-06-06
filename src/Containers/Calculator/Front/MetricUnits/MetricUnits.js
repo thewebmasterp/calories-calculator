@@ -1,7 +1,6 @@
 import React from 'react';
-import './MetricUnits.scss'; 
-import Field from '../../../Components/FrontLayout/Field/Field';
-import Input from '../../../Components/UI/Input/Input';
+import Field from '../../../../Components/FrontLayout/Field/Field';
+import Input from '../../../../Components/UI/Input/Input';
 
 const metricUnits = () => {
     return (

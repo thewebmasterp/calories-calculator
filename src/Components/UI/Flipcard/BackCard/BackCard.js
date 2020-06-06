@@ -1,7 +1,7 @@
 import React from 'react';
-import './Back.scss';
+import './BackCard.scss';
 
-const back = (props) => {
+const BackCard = (props) => {
     return (
         <div className="Back" style={{
             height: "500px" 
@@ -11,4 +11,4 @@ const back = (props) => {
     )
 };
 
-export default back;
+export default BackCard;
