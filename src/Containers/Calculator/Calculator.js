@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Route, Switch, NavLink, useLocation } from 'react-router-dom';
 import './Calculator.scss';
 import defaults from '../../defaults/defaults.scss';
+import { connect } from 'react-redux';
 
 import ImperialUnits from './ImperialUnits/ImperialUnits';
 import MetricUnits from './MetricUnits/MetricUnits';
@@ -22,7 +23,7 @@ import RangeActiv from '../../Components/UI/Input/RangeActiv/RangeActiv';
 import { BsFillGearFill, BsArrowClockwise } from "react-icons/bs";
 
 
-const Calculator = () => {
+const Calculator = (props) => {
     const [gender, changeGender] = useState(defaults.defaultGender);
     const [flipCardDeg, changeFCDeg] = useState(0);
     let currentPath = useLocation().pathname;
@@ -49,6 +50,8 @@ const Calculator = () => {
     const ResetHandler = () => {
         console.log('RESET');
     }
+
+    console.log(props); //Redux set up.
 
     return (
         <>
@@ -102,5 +105,12 @@ const Calculator = () => {
     );
 } 
 
-export default Calculator;
+const mapStateToProps = state => {
+    return {
+        ctr: state.counter
+    }
+}
+
+export default connect(mapStateToProps)(Calculator);
+
 
