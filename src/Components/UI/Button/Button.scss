@@ -8,6 +8,7 @@ button {
     padding: 0 20px;
     text-transform: uppercase;
     user-select: none;
+    height: 40px;
     &:focus {
         outline: none;
     }
@@ -22,6 +23,11 @@ button {
     }
     &.icon {
         width: 40px;
+    }
+    &.noRipple {
+        &:active {
+            background: mix($color2, mix($color2, mix($color2, white)));
+        }
     }
 }
 

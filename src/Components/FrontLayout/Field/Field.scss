@@ -1,3 +1,5 @@
+@import '../../../defaults/defaults.scss';
+
 .Field {
     height: auto;
     min-height: 40px;
@@ -31,5 +33,12 @@
             justify-content: flex-end;
             button { margin-left: 10px }
         }
+    }
+    &.auto {
+        height: auto;
+        background: $color7;
+        .content {
+            height: auto;
+        } 
     }
 }

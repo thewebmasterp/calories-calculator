@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink, useLocation } from 'react-router-dom';
 import './Calculator.scss';
 import defaults from '../../defaults/defaults.scss';
 
@@ -25,6 +25,7 @@ import { BsFillGearFill, BsArrowClockwise } from "react-icons/bs";
 const Calculator = () => {
     const [gender, changeGender] = useState(defaults.defaultGender);
     const [flipCardDeg, changeFCDeg] = useState(0);
+    let currentPath = useLocation().pathname;
 
     const TOTALhandler = () => {
         console.log('TOTAL');
@@ -34,8 +35,16 @@ const Calculator = () => {
         changeFCDeg(180);
 
     }
+    let [num, toggleNum] = useState(0);
     const SettingsHandler = () => {
-        console.log('SETTINGS');
+        if (num%2 === 0) {
+            currentPath += 'settings';
+        } else {
+            currentPath += ''
+        }
+        toggleNum(num+1);
+
+        console.log(currentPath);
     }
     const ResetHandler = () => {
         console.log('RESET');
@@ -77,7 +86,9 @@ const Calculator = () => {
                                 <Route path="/settings" component={Settings} />
                         </Switch>
                         <Field end>
-                            <Button click={SettingsHandler} icon><BsFillGearFill style={{fontSize: '1.5em'}} /></Button>
+                            <NavLink to={currentPath}>
+                                <Button click={SettingsHandler} icon noRipple><BsFillGearFill style={{fontSize: '1.5em'}} /></Button>
+                            </NavLink>
                             <Button click={ResetHandler} icon><BsArrowClockwise style={{fontSize: '1.5em'}} /></Button>
                             <Button click={TOTALhandler}>total</Button>
                         </Field> 
@@ -92,3 +103,4 @@ const Calculator = () => {
 } 
 
 export default Calculator;
+
