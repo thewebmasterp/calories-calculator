@@ -53,7 +53,7 @@ const Front = (props) => {
                     <Tabs active={props.defs.defaultUnit}/>
                 </Field>
                 <Field label="age">
-                    <Input change={(event) => props.redux.write.setAge(event.target.value)} type="number" guide="years"/>
+                    <Input change={(e) => props.redux.write.setAge(e.target.value)} type="number" guide="years"/>
                 </Field>
                 <Field label="gender" >
                     <div className="radioContainer">
@@ -64,15 +64,15 @@ const Front = (props) => {
                     </div>
                 </Field>
                 <Switch>
-                        <Route path="/imperial" component={ImperialUnits} />
-                        <Route path="/metric" exact component={MetricUnits} />
-                        <Route path="/" component={props.defs.defaultUnit === "I" ? ImperialUnits : MetricUnits} />
+                        <Route path="/imperial" render={() => <ImperialUnits redux={ props.redux } />} />
+                        <Route path="/metric" exact render={() => <MetricUnits redux={ props.redux } />} />
+                        <Route path="/" render={props.defs.defaultUnit === "I" ? ()=>{return <ImperialUnits redux={ props.redux } />} : ()=>{return <MetricUnits redux={ props.redux } />} } />
                 </Switch> 
                 <Field label="activity">
-                    <RangeActiv />
+                    <RangeActiv change={(e) => props.redux.write.setActivity(e.target.value)} />
                 </Field> 
                 <Field label="goal">
-                    <RangeGoal />
+                    <RangeGoal change={(e) => props.redux.write.setGoal(e.target.value)} />
                 </Field>
                 <Switch>
                         <Route path="/imperial/settings" component={Settings} />

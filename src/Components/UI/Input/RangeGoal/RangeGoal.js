@@ -29,6 +29,7 @@ const RangeGoal = (props) => {
             changeOTD(180);
             changeGuide(ratios[2][1]);
         }
+        props.change(event);
     }
 
     return (
@@ -38,7 +39,7 @@ const RangeGoal = (props) => {
                 left: `${thumbPos}%`,
                 transitionDuration: `${overlayTransitionDuration}ms`
             }} />
-            <Input onchange={(a) => changeHandler(a)} type="range" guides={{ //always the sum must be 100
+            <Input onchange={(e) => changeHandler(e)} type="range" guides={{ //always the sum must be 100
                 one: ratios[0][0],
                 two: ratios[1][0],
                 three: ratios[2][0],

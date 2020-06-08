@@ -38,7 +38,9 @@ const mapDispatchToProps = dispatch => {
             setGoal: (percent) => dispatch({ type: 'SET_GOAL', payload: percent }),
             setMunitHeight: (centimeters) => dispatch({ type: 'SET_M_UNIT_HEIGHT', payload: centimeters }),
             setMunitWeight: (kilograms) => dispatch({ type: 'SET_M_UNIT_WEIGHT', payload: kilograms }),
-            setIunitHeight: (feet, inches) => dispatch({ type: 'SET_I_UNIT_HEIGHT', payload: {feet: feet, inches: inches} }),
+            // setIunitHeight: (feet, inches) => dispatch({ type: 'SET_I_UNIT_HEIGHT', payload: {feet: feet, inches: inches} }),
+            setIunitHeightFeet: (feet) => dispatch({type: 'SET_I_UNIT_HEIGHT_FEET', payload: feet}),
+            setIunitHeightInches: (inches) => dispatch({type: 'SET_I_UNIT_HEIGHT_INCHES', payload: inches}),
             setIunitWeight: (pounds) => dispatch({ type: 'SET_I_UNIT_WEIGHT', payload: pounds }),
         }
     }

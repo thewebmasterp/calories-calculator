@@ -51,10 +51,13 @@ const reducer = (state = initialState, action) => {
         let obj = { ...state };
         obj.MUnit.weight.kilograms = action.payload;
         return obj;
-    } else if (action.type === 'SET_I_UNIT_HEIGHT') {
+    } else if (action.type === 'SET_I_UNIT_HEIGHT_FEET') {
         let obj = { ...state };
-        obj.IUnit.height.feet = action.payload.feet;
-        obj.IUnit.height.inches = action.payload.inches;
+        obj.IUnit.height.feet = action.payload;
+        return obj;
+    } else if (action.type === 'SET_I_UNIT_HEIGHT_INCHES') {
+        let obj = { ...state };
+        obj.IUnit.height.inches = action.payload;
         return obj;
     } else if (action.type === 'SET_I_UNIT_WEIGHT') {
         let obj = { ...state };

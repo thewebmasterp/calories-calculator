@@ -25,6 +25,7 @@ const RangeActiv = (props) => {
             changeActive(() => 'five');
             changeGuide(ratios[4][1]);
         }
+        props.change(event);
     } 
     return (
         <Input onchange={(a) => changeHandler(a)} type="range" guides={{ //always the sum must be 100

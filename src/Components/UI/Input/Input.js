@@ -7,11 +7,13 @@ const TextInput = (props) => {
     const [labelState, changeLabelState] = useState('0');
     let value = ''; //the value of the text input
 
-    const determine = (focus) => {
-        if (focus === 'in') {
-            changeLabelState('1');
-        } else if (focus === 'out' && value.length === 0) {
-            changeLabelState('0')
+    const changeHandler = (event) => {
+        value = event.target.value
+        props.change(event);
+        if (value.length === 0) {
+            changeLabelState(0);
+        } else if (value.length > 0) {
+            changeLabelState(1);
         }
     }
 
@@ -21,13 +23,13 @@ const TextInput = (props) => {
             input = (
                 <div    className="wrap" 
                         style={props.style} 
-                        onFocus={()=>determine('in')} 
-                        onBlur={()=>determine('out')}
-                        onChange={(event)=>{value = event.target.value}}>
+                        onFocus={() => changeLabelState(1)} 
+                        onBlur={(e) => changeHandler(e)}
+                        onChange={(e) => changeHandler(e)} >
                     <p className="currency" 
                         style={{'opacity': labelState}}
-                        onFocus={()=>{ /*console.log('bla')*/ }}>{props.guide}</p>
-                    <input min={props.min} max={props.max}  onChange={props.change} type="number"/>
+                        onFocus={() => { /*console.log('bla')*/ }}>{props.guide}</p>
+                    <input type="number"/>
                 </div>);
             break;
         case 'range':
