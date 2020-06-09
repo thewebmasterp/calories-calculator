@@ -9,9 +9,7 @@ import Front from '../../Containers/Calculator/Front/Front';
 import Back from '../../Containers/Calculator/Back/Back';
 
 const Calculator = (props) => {
-
     const [flipCardDeg, changeFCDeg] = useState(0);
-
 
     return (
         <>
@@ -39,8 +37,8 @@ const mapDispatchToProps = dispatch => {
             setMunitHeight: (centimeters) => dispatch({ type: 'SET_M_UNIT_HEIGHT', payload: centimeters }),
             setMunitWeight: (kilograms) => dispatch({ type: 'SET_M_UNIT_WEIGHT', payload: kilograms }),
             // setIunitHeight: (feet, inches) => dispatch({ type: 'SET_I_UNIT_HEIGHT', payload: {feet: feet, inches: inches} }),
-            setIunitHeightFeet: (feet) => dispatch({type: 'SET_I_UNIT_HEIGHT_FEET', payload: feet}),
-            setIunitHeightInches: (inches) => dispatch({type: 'SET_I_UNIT_HEIGHT_INCHES', payload: inches}),
+            // setIunitHeightFeet: (feet) => dispatch({type: 'SET_I_UNIT_HEIGHT_FEET', payload: feet}),
+            setIunitHeight: (inches) => dispatch({type: 'SET_I_UNIT_HEIGHT', payload: inches}),
             setIunitWeight: (pounds) => dispatch({ type: 'SET_I_UNIT_WEIGHT', payload: pounds }),
         }
     }

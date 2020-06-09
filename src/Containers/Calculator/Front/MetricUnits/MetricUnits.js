@@ -9,7 +9,7 @@ const metricUnits = (props) => {
                 <Input change={ (e) => props.redux.write.setMunitHeight(e.target.value) } type="number" guide="centimeters"/>
             </Field> 
             <Field label="weight">
-                <Input change={ (e) => props.redux.write.setMunitWeight(e.target.value) } type="number" guide="kilograms" />
+                <Input def={props.redux.read.MUnit.weight.kilograms} change={ (e) => props.redux.write.setMunitWeight(e.target.value) } type="number" guide="kilograms" />
             </Field>
         </>
     );

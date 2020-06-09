@@ -7,29 +7,28 @@ const TextInput = (props) => {
     const [labelState, changeLabelState] = useState('0');
     let value = ''; //the value of the text input
 
-    const changeHandler = (event) => {
-        value = event.target.value
-        props.change(event);
-        if (value.length === 0) {
+    const changeHandler = (event, focus) => {
+        value = event.target.value;
+        // props.change(event);
+        if (value.length === 0 || Number(value) === 0) {
             changeLabelState(0);
-        } else if (value.length > 0) {
+        } else if (value.length > 0 && Number(value) !== 0) {
             changeLabelState(1);
         }
     }
 
     switch(props.type) {
         case 'number':
-
             input = (
                 <div    className="wrap" 
                         style={props.style} 
-                        onFocus={() => changeLabelState(1)} 
+                        onFocus={(e) => changeLabelState(1) } 
                         onBlur={(e) => changeHandler(e)}
                         onChange={(e) => changeHandler(e)} >
                     <p className="currency" 
                         style={{'opacity': labelState}}
                         onFocus={() => { /*console.log('bla')*/ }}>{props.guide}</p>
-                    <input type="number"/>
+                    <input defaultValue={props.def} value={props.val} onChange={props.change} type="number"/>
                 </div>);
             break;
         case 'range':
