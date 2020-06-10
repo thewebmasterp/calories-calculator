@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ImperialUnits from './ImperialUnits/ImperialUnits';
 import MetricUnits from './MetricUnits/MetricUnits'; 
@@ -46,6 +46,8 @@ const Front = (props) => {
         console.log('RESET');
     }
 
+    
+
     return (
         <FrontCard>
             <FrontLayout>
@@ -53,7 +55,7 @@ const Front = (props) => {
                     <Tabs active={props.defs.defaultUnit}/>
                 </Field>
                 <Field label="age">
-                    <Input change={(e) => props.redux.write.setAge(e.target.value)} type="number" guide="years"/>
+                    <Input change={(e) => props.redux.write.setAge(e.target.value)} type="number" guide="years" trigger={false} />
                 </Field>
                 <Field label="gender" >
                     <div className="radioContainer">
@@ -66,7 +68,7 @@ const Front = (props) => {
                 <Switch>
                         <Route path="/imperial" render={() => <ImperialUnits redux={ props.redux } />} />
                         <Route path="/metric" exact render={() => <MetricUnits redux={ props.redux } />} />
-                        <Route path="/" render={props.defs.defaultUnit === "I" ? ()=>{return <ImperialUnits redux={ props.redux } />} : ()=>{return <MetricUnits redux={ props.redux } />} } />
+                        <Route path={'*'} render={props.defs.defaultUnit === "I" ? ()=>{return <ImperialUnits redux={ props.redux } />} : ()=>{return <MetricUnits redux={ props.redux } />} } />
                 </Switch> 
                 <Field label="activity">
                     <RangeActiv change={(e) => props.redux.write.setActivity(e.target.value)} />

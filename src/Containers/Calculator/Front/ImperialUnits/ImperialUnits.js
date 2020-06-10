@@ -7,8 +7,8 @@ const ImperialUnits = (props) => {
 
 
     const [params, changeParams] = useState({
-        feet: 0,
-        inches: 0,
+        feet: global.config.mapInch_to_FeetandInch(props.redux.read.IUnit.height.inches)[0],
+        inches: global.config.mapInch_to_FeetandInch(props.redux.read.IUnit.height.inches)[1],
     });
 
     const viceVersa = (param, event) => {
@@ -33,16 +33,16 @@ const ImperialUnits = (props) => {
     return (
         <>
             <Field label="height">
-                <Input type="number" val={String(params.feet).replace(/^0+/, '')} change={ (e) => {viceVersa('feet', e)} } guide="feet" style={{
+                <Input trigger={true} type="number" val={String(params.feet).replace(/^0+/, '')} change={ (e) => {viceVersa('feet', e)} } guide="feet" style={{
                     width: '48%',
                     marginRight: '0',
                 }} />
-                <Input type="number" val={String(params.inches).replace(/^0+/, '')} change={ (e) => {viceVersa('inches', e)} }  guide="inches" style={{
+                <Input trigger={true} type="number" val={String(params.inches).replace(/^0+/, '')} change={ (e) => {viceVersa('inches', e)} }  guide="inches" style={{
                     width: '48%',
                 }} />
             </Field> 
             <Field label="weight">
-                <Input def={props.redux.read.IUnit.weight.pounds} type="number" change={ (e) => {props.redux.write.setIunitWeight(e.target.value)} } guide="pounds"/>
+                <Input trigger={true} def={props.redux.read.IUnit.weight.pounds} type="number" change={ (e) => {props.redux.write.setIunitWeight(e.target.value)} } guide="pounds"/>
             </Field>
         </>
     );

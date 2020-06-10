@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Input.scss';
 import { BsConeStriped } from 'react-icons/bs';
 
@@ -13,23 +13,45 @@ const TextInput = (props) => {
         if (value.length === 0 || Number(value) === 0) {
             changeLabelState(0);
         } else if (value.length > 0 && Number(value) !== 0) {
-            changeLabelState(1);
+            if (event.target.elemento) {
+                let el = event.target.elemento.getElementsByTagName('p')[0];
+                el.style.opacity = 1;
+            } else {
+                changeLabelState(1);
+            }
         }
     }
 
+    useEffect( () => {
+        const inputs = document.querySelectorAll('[data-trigger=true][data-triggered=false]');
+        inputs.forEach((el) => {
+            el.setAttribute('data-triggered', true);
+            changeHandler({
+                target: {
+                    value: el.getElementsByTagName('input')[0].value,
+                    elemento: el
+                }
+            });
+        });
+    } );
+
     switch(props.type) {
         case 'number':
+
             input = (
-                <div    className="wrap" 
+                <div    data-trigger={props.trigger}
+                        data-triggered={false}
+                        className="wrap" 
                         style={props.style} 
                         onFocus={(e) => changeLabelState(1) } 
                         onBlur={(e) => changeHandler(e)}
-                        onChange={(e) => changeHandler(e)} >
+                        onChange={(e) => changeHandler(e)} 
+                        onLoad={(e) => console.log('try')} >
                     <p className="currency" 
-                        style={{'opacity': labelState}}
-                        onFocus={() => { /*console.log('bla')*/ }}>{props.guide}</p>
+                        style={{'opacity': labelState}}>{props.guide}</p>
                     <input defaultValue={props.def} value={props.val} onChange={props.change} type="number"/>
                 </div>);
+            
             break;
         case 'range':
 
