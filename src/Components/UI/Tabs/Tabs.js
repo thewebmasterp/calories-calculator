@@ -25,13 +25,14 @@ const Tabs = (props) => {
     //         <button>METRIC UNITS</button>
     //     </NavLink>
     // </>);
+    // console.log(props.redux.routeReducer.currentSettingsRoute);
     return (
         <>
-            <NavLink to="/imperial" className="button">
-                <button>IMPERIAL UNITS</button>
+            <NavLink to={props.redux.routeReducer.currentMasterRoute+"/imperial"+props.redux.routeReducer.currentSettingsRoute} className="button">
+                <button onClick={() => props.redux.setUnits('/imperial')}>IMPERIAL UNITS</button>
             </NavLink>
-            <NavLink to="/metric" className="button">
-                <button>METRIC UNITS</button>
+            <NavLink to={props.redux.routeReducer.currentMasterRoute+"/metric"+props.redux.routeReducer.currentSettingsRoute} className="button">
+                <button onClick={() => props.redux.setUnits('/metric')}>METRIC UNITS</button>
             </NavLink>
         </>
     )

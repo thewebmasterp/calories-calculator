@@ -5,7 +5,6 @@ import config from '../../../../config';
 
 const ImperialUnits = (props) => {
 
-
     const [params, changeParams] = useState({
         feet: global.config.mapInch_to_FeetandInch(props.redux.reducer.IUnit.height.inches)[0],
         inches: global.config.mapInch_to_FeetandInch(props.redux.reducer.IUnit.height.inches)[1],
@@ -27,7 +26,8 @@ const ImperialUnits = (props) => {
 
     useEffect(()=>{
         const totalInches = global.config.totalIHEIGHTval(params.feet, params.inches);
-        props.redux.reducer.setIunitHeight(totalInches);
+        console.log(props.redux)
+        props.redux.setIunitHeight(totalInches);
     }, [params]);
 
     return (
@@ -42,7 +42,7 @@ const ImperialUnits = (props) => {
                 }} />
             </Field> 
             <Field label="weight">
-                <Input trigger={true} def={props.redux.reducer.IUnit.weight.pounds} type="number" change={ (e) => {props.redux.reducer.setIunitWeight(e.target.value)} } guide="pounds"/>
+                <Input trigger={true} def={props.redux.reducer.IUnit.weight.pounds} type="number" change={ (e) => {props.redux.setIunitWeight(e.target.value)} } guide="pounds"/>
             </Field>
         </>
     );
