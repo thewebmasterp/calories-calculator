@@ -4,11 +4,17 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+
 import reducer from './store/reducer';
+import routeReducer from './store/routeReducer';
+
 import { Provider } from 'react-redux';
 
-const store = createStore(reducer);
+const rootReducer = combineReducers({reducer: reducer, routeReducer: routeReducer});
+
+// const store = createStore(reducer);
+const store = createStore(rootReducer);
 store.subscribe(() => {
   console.log(store.getState());
 });

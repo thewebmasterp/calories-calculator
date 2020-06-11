@@ -25,7 +25,16 @@ const Tabs = (props) => {
     //         <button>METRIC UNITS</button>
     //     </NavLink>
     // </>);
-    return (<div />)
+    return (
+        <>
+            <NavLink to="/imperial" className="button">
+                <button>IMPERIAL UNITS</button>
+            </NavLink>
+            <NavLink to="/metric" className="button">
+                <button>METRIC UNITS</button>
+            </NavLink>
+        </>
+    )
 };
 
 export default Tabs;

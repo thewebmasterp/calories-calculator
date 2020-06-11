@@ -1,4 +1,4 @@
-import config from '../config';
+// import config from '../config';
 
 const initialState = {
     age: 0,
@@ -22,9 +22,6 @@ const initialState = {
     activity: 0,
     goal: 0,
 }
-
-const FEETtoIN = a => a * 12;
-// const totalMHEIGHTval = (feet, inches) => {return  Number(inches) + FEETtoIN(Number(feet))} //inches + feets(into inches)
 
 const reducer = (state = initialState, action) => {
     if (action.type === 'SET_AGE') {

@@ -1,26 +1,36 @@
 @import '../../../defaults/defaults.scss';
-@import '../../../defaults/defaults.scss';
 
 a.button{
+    // width: 50%;
+    // background: $color5;
+    // button {
+    //     background: inherit;
+    //     width: 100%;
+    //     height: 100%;
+    //     border: none;
+    //     color: $color4;
+    //     &:focus {
+    //         outline: none;
+    //     }
+    //     &:hover {
+    //         cursor: pointer;
+    //     }
+    // }
+    // &.active {
+    //     background: $color1;
+    //     button:hover {
+    //         cursor: default;
+    //     }
+    // }
+}
+a.button {
     width: 50%;
-    background: $color5;
     button {
-        background: inherit;
+        background: $color8;
         width: 100%;
         height: 100%;
-        border: none;
-        color: $color4;
-        &:focus {
-            outline: none;
-        }
-        &:hover {
-            cursor: pointer;
-        }
     }
-    &.active {
-        background: $color1;
-        button:hover {
-            cursor: default;
-        }
+    &.active button {
+        background-color: $color1 !important;
     }
 }

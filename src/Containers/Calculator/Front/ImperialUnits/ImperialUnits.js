@@ -7,8 +7,8 @@ const ImperialUnits = (props) => {
 
 
     const [params, changeParams] = useState({
-        feet: global.config.mapInch_to_FeetandInch(props.redux.read.IUnit.height.inches)[0],
-        inches: global.config.mapInch_to_FeetandInch(props.redux.read.IUnit.height.inches)[1],
+        feet: global.config.mapInch_to_FeetandInch(props.redux.reducer.IUnit.height.inches)[0],
+        inches: global.config.mapInch_to_FeetandInch(props.redux.reducer.IUnit.height.inches)[1],
     });
 
     const viceVersa = (param, event) => {
@@ -27,7 +27,7 @@ const ImperialUnits = (props) => {
 
     useEffect(()=>{
         const totalInches = global.config.totalIHEIGHTval(params.feet, params.inches);
-        props.redux.write.setIunitHeight(totalInches);
+        props.redux.reducer.setIunitHeight(totalInches);
     }, [params]);
 
     return (
@@ -42,7 +42,7 @@ const ImperialUnits = (props) => {
                 }} />
             </Field> 
             <Field label="weight">
-                <Input trigger={true} def={props.redux.read.IUnit.weight.pounds} type="number" change={ (e) => {props.redux.write.setIunitWeight(e.target.value)} } guide="pounds"/>
+                <Input trigger={true} def={props.redux.reducer.IUnit.weight.pounds} type="number" change={ (e) => {props.redux.reducer.setIunitWeight(e.target.value)} } guide="pounds"/>
             </Field>
         </>
     );
