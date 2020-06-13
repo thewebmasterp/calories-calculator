@@ -12,16 +12,33 @@ import { Route, Switch, Redirect } from 'react-router';
 const Calculator = (props) => {
     const [flipCardDeg, changeFCDeg] = useState(0);
 
+    console.log(props)
     return (
         <>
             <FlipCard flip={ flipCardDeg }>
-                <Switch flip={ flipCardDeg }>
+                <Switch flip={ flipCardDeg}>
                     <Route 
                         path={ "/front" } 
                         render={ ()=>{
                             return <Front 
+                                        degree={flipCardDeg}
                                         redux={ props } 
-                                        defs={ defaults } 
+                                        defs={ defaults }
+                                        flip={ (deg)=>{
+                                            if (deg || deg===0) {
+                                                changeFCDeg(deg);
+                                                console.log(`1: changeFCDeg(${deg})`)
+                                            } else {
+                                                changeFCDeg(180);
+                                                console.log(`1: changeFCDeg(180)`)
+                                            }
+                                        } }
+                                        render={ ()=>{
+                                            return <Back 
+                                                        redux={ props } 
+                                                        defs = { defaults } 
+                                                    />; //end Back 
+                                        } }
                                     />; //end Front render 
                         } } //end Route render 
                     />
@@ -29,14 +46,23 @@ const Calculator = (props) => {
                         path={ "/back" } 
                         render={() => {
                             return <Front 
+                                        degree={flipCardDeg}
                                         redux={ props } 
                                         defs={ defaults } 
-                                        flip={ (deg)=>changeFCDeg(deg) } 
+                                        flip={ (deg)=>{
+                                            if (deg || deg===0) {
+                                                changeFCDeg(180);
+                                                console.log(`3: changeFCDeg(180)`)
+                                            } else {
+                                                changeFCDeg(180);
+                                                console.log(`3: changeFCDeg(180)`)
+                                                props.history.push('/back');
+                                            }
+                                        } }
                                         render={ ()=>{
                                             return <Back 
                                                         redux={ props } 
                                                         defs = { defaults } 
-                                                        flip={ (deg)=>changeFCDeg(deg) }
                                                     />; //end Back 
                                         } }
                                     />; //end Front render 

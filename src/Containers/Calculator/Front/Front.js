@@ -22,10 +22,11 @@ const Front = (props) => {
         //VALIDATE AND IF EVERYTHING IS FINE:
         
         //flip (moved in calculator.js)
-        // setTimeout(() => {
-            // props.flip(180);
-        // }, 250);
-        props.history.push('/back');
+        setTimeout(() => {
+            props.history.push('/back');
+        }, 1000);
+        // props.history.push('/back');
+        props.flip(180);
     }
 
     const [settingsToggler, toggle] = useState(true);
@@ -42,15 +43,12 @@ const Front = (props) => {
     }
 
     useEffect(() => {
-        if (props.flip) {
-            props.flip(180);
-        }
-    });
-
-    
+            props.flip(0)
+    }, [props.history.location.pathname]);
 
     return (
         <>
+            {props.render ? props.render() : null}
             <FrontCard>
                 <FrontLayout>
                     <Field whole>
@@ -89,7 +87,6 @@ const Front = (props) => {
                     </Field> 
                 </FrontLayout>
             </FrontCard>
-            {props.render ? props.render() : null}
         </>
     )
 }

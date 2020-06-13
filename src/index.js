@@ -13,7 +13,6 @@ import { Provider } from 'react-redux';
 
 const rootReducer = combineReducers({reducer: reducer, routeReducer: routeReducer});
 
-// const store = createStore(reducer);
 const store = createStore(rootReducer);
 store.subscribe(() => {
   console.log(store.getState());
